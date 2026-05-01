@@ -1,8 +1,5 @@
-name = "skyfall-inc-llc"
+name = "skyfallinc-llc"
 compatibility_date = "2024-01-01"
-
-[env.production]
-name = "skyfall-inc-llc"
 
 [pages]
 pages_build_output_dir = "dist"
