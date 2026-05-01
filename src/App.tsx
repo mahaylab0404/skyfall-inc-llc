@@ -1,3 +1,4 @@
+import { LanguageProvider } from './LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
@@ -11,19 +12,21 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="bg-black min-h-screen text-zinc-100 selection:bg-brand-sage selection:text-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <QualitySection />
-        <Automation />
-        <Gallery />
-        <HowItWorks />
-        <BrandMission />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="bg-black min-h-screen text-zinc-100 selection:bg-brand-sage selection:text-white">
+        <Navbar />
+        <main>
+          <Hero />
+          <Services />
+          <QualitySection />
+          <Automation />
+          <Gallery />
+          <HowItWorks />
+          <BrandMission />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
