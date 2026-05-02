@@ -57,7 +57,7 @@ export default function Contact() {
                 </div>
                 <div className="text-sm">
                   <p className="text-zinc-500 uppercase tracking-widest text-[8px] md:text-[9px] mb-0.5 font-bold">{c.phoneLabel}</p>
-                  <a href="tel:6362242550" className="text-zinc-100 hover:text-brand-sage transition-colors text-[13px] md:text-[14px] font-light italic">(636) 224-2550</a>
+                  <a href="tel:5733058900" className="text-zinc-100 hover:text-brand-sage transition-colors text-[13px] md:text-[14px] font-light italic">(573) 305-8900</a>
                 </div>
               </div>
             </div>

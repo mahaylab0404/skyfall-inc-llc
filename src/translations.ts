@@ -90,7 +90,7 @@ export const t = {
     },
     contact: {
       eyebrow: 'Connect',
-      heading: 'Contact Skyfall.inc LLC',
+      heading: 'Contact Skyfall Inc. for a Quote',
       sub: 'Tell us about your space, equipment needs, and project goals. Skyfall.inc LLC will follow up about custom grow room setups, irrigation layouts, lighting and ventilation, or smart automation systems.',
       hqLabel: 'Headquarters',
       emailLabel: 'Email Us',
