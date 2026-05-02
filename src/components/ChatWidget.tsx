@@ -17,12 +17,12 @@ interface LeadAction {
 }
 
 const GREETINGS: Record<string, string> = {
-  en: "Hi! I'm the Skyfall Assistant. Tell me about your project — what kind of space are you working with and what are you looking to grow?",
-  es: "¡Hola! Soy el Asistente de Skyfall. Cuéntame sobre tu proyecto — ¿qué tipo de espacio tienes y qué quieres cultivar?",
-  fr: "Bonjour ! Je suis l'Assistant Skyfall. Parlez-moi de votre projet — quel type d'espace avez-vous et que souhaitez-vous cultiver ?",
-  ht: "Bonjou! Mwen se Asistan Skyfall. Pale m sou pwojè ou — ki kalite espas ou genyen epi kisa ou vle kilitve?",
-  ru: "Привет! Я Ассистент Skyfall. Расскажите о своём проекте — какое у вас пространство и что вы хотите выращивать?",
-  pt: "Olá! Sou o Assistente Skyfall. Fale-me sobre seu projeto — que tipo de espaço você tem e o que quer cultivar?",
+  en: "Hi! I'm the Skyfall Assistant. Are you looking to build a new grow room, upgrade an existing setup, or just exploring your options?",
+  es: "¡Hola! Soy el Asistente de Skyfall. ¿Estás buscando construir un nuevo cuarto de cultivo, mejorar uno existente, o solo explorando opciones?",
+  fr: "Bonjour ! Je suis l'Assistant Skyfall. Vous cherchez à construire une nouvelle salle de culture, à améliorer une installation existante, ou à explorer vos options ?",
+  ht: "Bonjou! Mwen se Asistan Skyfall. Èske ou ap chèche bati yon nouvo chanm pou kiltivasyon, amelyore youn ki egziste deja, oswa jis eksplore opsyon ou yo?",
+  ru: "Привет! Я Ассистент Skyfall. Вы хотите построить новую комнату для выращивания, обновить существующую систему, или просто изучаете варианты?",
+  pt: "Olá! Sou o Assistente Skyfall. Você está procurando construir um novo grow room, melhorar uma configuração existente, ou apenas explorando suas opções?",
 };
 
 const SEND_CONFIRM: Record<string, string> = {
@@ -74,7 +74,10 @@ export default function ChatWidget() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: next, lang }),
       });
-      const data = await res.json() as { reply: string };
+      const data = await res.json() as { reply?: string; error?: string };
+      if (!res.ok || data.error) {
+        throw new Error(data.error ?? `Server error ${res.status}`);
+      }
       const reply = data.reply ?? '';
 
       // Check if the model returned a lead action JSON
