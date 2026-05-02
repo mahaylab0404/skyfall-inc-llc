@@ -44,6 +44,14 @@ export default function Hero() {
               {h.cta2}
             </a>
           </div>
+
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-6">
+            {h.chips.map((chip) => (
+              <span key={chip} className="flex items-center gap-1.5 px-3 py-1 border border-brand-sage/20 rounded-full text-[10px] uppercase tracking-widest text-brand-sage font-bold bg-brand-sage/5">
+                ✓ {chip}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
