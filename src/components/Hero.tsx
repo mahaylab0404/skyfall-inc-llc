@@ -55,7 +55,7 @@ export default function Hero() {
           <div className="relative z-10 rounded-[2rem] overflow-hidden silver-border aspect-[4/3] shadow-[0_0_50px_rgba(0,0,0,0.5)] group">
             <img
               src="/skyfall-inc-custom-grow-room-st-louis-mo.png.png"
-              alt="Premium Skyfall Inc Grow Room"
+              alt="Custom indoor grow room built by Skyfall Inc. LLC in St. Louis, Missouri"
               className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
               referrerPolicy="no-referrer"
             />

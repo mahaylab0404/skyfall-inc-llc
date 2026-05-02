@@ -60,7 +60,7 @@ export default function Automation() {
           <div className="aspect-[4/5] md:aspect-square glass-card silver-border rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden relative">
             <img
               src="/skyfall-inc-custom-grow-room-st-louis-mo.png.png"
-              alt="Skyfall Automation Controller"
+              alt="Skyfall Inc. grow room automation controller — environmental monitoring and climate control system, Missouri"
               className="w-full h-full object-cover grayscale brightness-[0.5] transition-all duration-1000 group-hover:grayscale-0 group-hover:brightness-100"
               referrerPolicy="no-referrer"
             />

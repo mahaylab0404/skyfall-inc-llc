@@ -46,11 +46,11 @@ export default function Navbar() {
       } flex items-center`}
     >
       <div className="w-full max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="flex items-center group shrink-0">
+        <a href="#home" className="flex items-center group shrink-0 bg-white/5 border border-white/10 rounded-xl px-3 py-1.5 hover:border-brand-sage/30 hover:bg-white/10 transition-all duration-500">
           <img
             src="/skyfall-inc-logo-custom-grow-rooms.png.png"
-            alt="Skyfall Inc. LLC Logo"
-            className="max-h-[40px] md:max-h-[48px] w-auto object-contain hover:opacity-90 transition-all duration-500 group-hover:scale-105"
+            alt="Skyfall Inc. LLC — Custom Indoor Grow Rooms & Cultivation Automation, Missouri"
+            className="max-h-[48px] md:max-h-[60px] w-auto object-contain transition-all duration-500 group-hover:scale-105"
           />
         </a>
 

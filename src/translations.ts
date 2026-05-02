@@ -63,9 +63,9 @@ export const t = {
       eyebrow: 'Portfolio Preview',
       heading: 'Facility Showcase',
       items: [
-        { title: 'Integrated Grow Setup', description: 'Lighting and ventilation setup for optimal environmental control in custom Missouri facilities.' },
-        { title: 'Irrigation Systems', description: 'Precision drip irrigation and clean plumbing layouts for reliable plant health.' },
-        { title: 'Custom Room Buildouts', description: 'Industrial-grade indoor cultivation spaces designed for maximum efficiency.' },
+        { title: 'Integrated indoor grow room setup — lighting and ventilation, Missouri', description: 'Lighting and ventilation setup for optimal environmental control in custom Missouri facilities.' },
+        { title: 'Custom grow room irrigation system — precision drip plumbing, Missouri', description: 'Precision drip irrigation and clean plumbing layouts for reliable plant health.' },
+        { title: 'Custom indoor cultivation room buildout — industrial grow space, Missouri', description: 'Industrial-grade indoor cultivation spaces designed for maximum efficiency.' },
       ],
     },
     howItWorks: {

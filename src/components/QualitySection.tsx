@@ -44,7 +44,7 @@ export default function QualitySection() {
           <div className="rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden silver-border aspect-[4/3] group relative">
             <img
               src="/custom-grow-room-irrigation-system-missouri.png.png"
-              alt="Irrigation layout and clean room setup"
+              alt="Custom grow room irrigation system and clean room plumbing layout by Skyfall Inc. LLC, Missouri"
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />

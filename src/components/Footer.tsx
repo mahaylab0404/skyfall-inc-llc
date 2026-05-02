@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="flex items-center grayscale md:opacity-30 hover:opacity-100 transition-all duration-700 md:hover:grayscale-0">
             <img
               src="/skyfall-inc-logo-custom-grow-rooms.png.png"
-              alt="Skyfall Inc. LLC"
+              alt="Skyfall Inc. LLC — Custom Grow Room Builder & Indoor Cultivation Specialists, Missouri"
               className="w-28 md:w-32 h-auto"
             />
           </div>
