@@ -80,11 +80,11 @@ export default function ChatWidget() {
       }
       const reply = data.reply ?? '';
 
-      // Check if the model returned a lead action JSON
-      const trimmed = reply.trim();
-      if (trimmed.startsWith('{"action":"send_lead"')) {
+      // Extract JSON action — handles raw JSON or markdown code-fenced JSON
+      const jsonMatch = reply.match(/\{[\s\S]*"action"\s*:\s*"send_lead"[\s\S]*\}/);
+      if (jsonMatch) {
         try {
-          const lead = JSON.parse(trimmed) as LeadAction;
+          const lead = JSON.parse(jsonMatch[0]) as LeadAction;
           await sendLead(lead);
           setMessages((prev) => [
             ...prev,
