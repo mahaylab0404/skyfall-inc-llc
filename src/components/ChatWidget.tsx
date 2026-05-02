@@ -94,10 +94,10 @@ export default function ChatWidget() {
       } else {
         setMessages((prev) => [...prev, { role: 'model', content: reply }]);
       }
-    } catch {
+    } catch (err: any) {
       setMessages((prev) => [
         ...prev,
-        { role: 'model', content: 'Something went wrong. Please try again or email us at skyfallinc@icloud.com.' },
+        { role: 'model', content: `Something went wrong (${err?.message ?? 'network error'}). Please try again or email us at skyfallinc@icloud.com.` },
       ]);
     } finally {
       setLoading(false);

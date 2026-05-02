@@ -1,12 +1,3 @@
-interface Env {
-  GEMINI_API_KEY: string;
-}
-
-interface Message {
-  role: 'user' | 'model';
-  content: string;
-}
-
 const SYSTEM_PROMPT = `You are the Skyfall Assistant — a helpful, knowledgeable chat agent for Skyfall Inc. LLC, based in Doe Run, Missouri. Skyfall specializes in custom indoor grow rooms, irrigation systems, lighting and ventilation setups, and smart automation controllers for indoor cultivation spaces.
 
 Your job is to:
@@ -22,29 +13,23 @@ Your job is to:
 Rules:
 - Keep responses short — 2 to 4 sentences maximum.
 - Never make up prices. Say pricing is scope-dependent and discussed during a free consultation.
-- Never hallucinate services Skyfall doesn't offer.
+- Never hallucinate services Skyfall does not offer.
 - Always respond in the same language the user is writing in, UNLESS generating the JSON action — that must always be in English.
 - Be warm and conversational, not robotic or salesy.`;
 
-const LANGUAGE_GREETINGS: Record<string, string> = {
-  en: "Hi! I'm the Skyfall Assistant. Tell me about your project — what kind of space are you working with and what are you looking to grow?",
-  es: "¡Hola! Soy el Asistente de Skyfall. Cuéntame sobre tu proyecto — ¿qué tipo de espacio tienes y qué quieres cultivar?",
-  fr: "Bonjour ! Je suis l'Assistant Skyfall. Parlez-moi de votre projet — quel type d'espace avez-vous et que souhaitez-vous cultiver ?",
-  ht: "Bonjou! Mwen se Asistan Skyfall. Pale m sou pwojè ou — ki kalite espas ou genyen epi kisa ou vle kilitve?",
-  ru: "Привет! Я Ассистент Skyfall. Расскажите о своём проекте — какое у вас пространство и что вы хотите выращивать?",
-  pt: "Olá! Sou o Assistente Skyfall. Fale-me sobre seu projeto — que tipo de espaço você tem e o que quer cultivar?",
-};
-
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+export async function onRequestPost(context: any) {
   try {
-    const { messages, lang } = await request.json<{ messages: Message[]; lang: string }>();
+    const { messages, lang } = await context.request.json();
 
-    const apiKey = env.GEMINI_API_KEY;
+    const apiKey = context.env.GEMINI_API_KEY;
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'API key not configured' }), { status: 500 });
+      return new Response(JSON.stringify({ error: 'API key not configured' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    const contents = messages.map((m) => ({
+    const contents = messages.map((m: { role: string; content: string }) => ({
       role: m.role,
       parts: [{ text: m.content }],
     }));
@@ -66,18 +51,22 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
     if (!res.ok) {
       const err = await res.text();
-      return new Response(JSON.stringify({ error: err }), { status: 500 });
+      return new Response(JSON.stringify({ error: err }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    const data = await res.json<any>();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+    const data: any = await res.json();
+    const reply: string = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
 
     return new Response(JSON.stringify({ reply }), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (e: any) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: e.message ?? 'Unknown error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
-};
-
-export { LANGUAGE_GREETINGS };
+}
